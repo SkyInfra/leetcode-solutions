@@ -11,11 +11,14 @@ class solution {
         if(left > right){
             return NULL;
         }
+
         TreeNode* root = new TreeNode(postOrder[preindex]);
         preindex--;
+
         int index = search(inorder, left, right , root->val);
         root->right = helper(postOrder, inorder, index +1, right , preindex);
         root->left = helper(postOrder, inorder, left, index-1 , preindex);
+        
         return root;
     }
 public:
